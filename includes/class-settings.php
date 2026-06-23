@@ -1,0 +1,166 @@
+<?php
+
+defined( 'ABSPATH' ) || exit;
+
+class GiftRocket_Settings {
+
+	const OPTION_KEY = 'giftrocket_tools_settings';
+
+	public static function init(): void {
+		add_action( 'admin_menu', array( __CLASS__, 'add_menu' ) );
+		add_action( 'admin_init', array( __CLASS__, 'register_settings' ) );
+	}
+
+	public static function defaults(): array {
+		return array(
+			'shop_url'      => '',
+			'upsell_url'    => home_url( '/' ),
+			'redirect_url'  => home_url( '/' ),
+			'notify_email'  => get_option( 'admin_email' ),
+		);
+	}
+
+	public static function get( string $key = '' ) {
+		$settings = wp_parse_args(
+			get_option( self::OPTION_KEY, array() ),
+			self::defaults()
+		);
+
+		if ( '' === $key ) {
+			return $settings;
+		}
+
+		return $settings[ $key ] ?? '';
+	}
+
+	public static function add_menu(): void {
+		add_options_page(
+			__( 'GiftRocket Tools', 'giftrocket-tools' ),
+			__( 'GiftRocket Tools', 'giftrocket-tools' ),
+			'manage_options',
+			'giftrocket-tools',
+			array( __CLASS__, 'render_page' )
+		);
+	}
+
+	public static function register_settings(): void {
+		register_setting(
+			'giftrocket_tools',
+			self::OPTION_KEY,
+			array(
+				'type'              => 'array',
+				'sanitize_callback' => array( __CLASS__, 'sanitize' ),
+			)
+		);
+
+		add_settings_section(
+			'giftrocket_tools_main',
+			__( 'General Settings', 'giftrocket-tools' ),
+			'__return_false',
+			'giftrocket-tools'
+		);
+
+		$fields = array(
+			'shop_url'     => __( 'Shop / Gift Cards URL', 'giftrocket-tools' ),
+			'upsell_url'   => __( 'Forecaster Upsell Button URL', 'giftrocket-tools' ),
+			'redirect_url' => __( 'Lead Form Redirect URL', 'giftrocket-tools' ),
+			'notify_email' => __( 'Lead Notification Email', 'giftrocket-tools' ),
+		);
+
+		foreach ( $fields as $id => $label ) {
+			add_settings_field(
+				$id,
+				$label,
+				array( __CLASS__, 'render_field' ),
+				'giftrocket-tools',
+				'giftrocket_tools_main',
+				array( 'id' => $id )
+			);
+		}
+	}
+
+	public static function sanitize( $input ): array {
+		$clean = array();
+
+		foreach ( self::defaults() as $key => $default ) {
+			if ( ! isset( $input[ $key ] ) ) {
+				continue;
+			}
+
+			if ( 'notify_email' === $key ) {
+				$clean[ $key ] = sanitize_email( $input[ $key ] );
+			} else {
+				$clean[ $key ] = esc_url_raw( $input[ $key ] );
+			}
+		}
+
+		return wp_parse_args( $clean, self::defaults() );
+	}
+
+	public static function render_field( array $args ): void {
+		$id       = $args['id'];
+		$settings = self::get();
+		$value    = $settings[ $id ] ?? '';
+		$type     = 'notify_email' === $id ? 'email' : 'url';
+
+		printf(
+			'<input type="%1$s" name="%2$s[%3$s]" id="%3$s" value="%4$s" class="regular-text" />',
+			esc_attr( $type ),
+			esc_attr( self::OPTION_KEY ),
+			esc_attr( $id ),
+			esc_attr( $value )
+		);
+
+		$hints = array(
+			'shop_url'     => __( 'Used by the Gift Genius quiz "Shop Gift Cards" button.', 'giftrocket-tools' ),
+			'upsell_url'   => __( 'Used by the Revenue Forecaster "Get GiftRocket Now" button.', 'giftrocket-tools' ),
+			'redirect_url' => __( 'Where users go after submitting the lead capture form.', 'giftrocket-tools' ),
+			'notify_email' => __( 'Receives forecaster lead submissions.', 'giftrocket-tools' ),
+		);
+
+		if ( isset( $hints[ $id ] ) ) {
+			printf( '<p class="description">%s</p>', esc_html( $hints[ $id ] ) );
+		}
+	}
+
+	public static function render_page(): void {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+		?>
+		<div class="wrap">
+			<h1><?php esc_html_e( 'GiftRocket Tools', 'giftrocket-tools' ); ?></h1>
+
+			<form method="post" action="options.php">
+				<?php
+				settings_fields( 'giftrocket_tools' );
+				do_settings_sections( 'giftrocket-tools' );
+				submit_button();
+				?>
+			</form>
+
+			<hr>
+
+			<h2><?php esc_html_e( 'Shortcodes', 'giftrocket-tools' ); ?></h2>
+			<table class="widefat" style="max-width: 700px;">
+				<thead>
+					<tr>
+						<th><?php esc_html_e( 'Tool', 'giftrocket-tools' ); ?></th>
+						<th><?php esc_html_e( 'Shortcode', 'giftrocket-tools' ); ?></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><?php esc_html_e( 'Gift Genius Quiz', 'giftrocket-tools' ); ?></td>
+						<td><code>[gift_genius_quiz]</code></td>
+					</tr>
+					<tr>
+						<td><?php esc_html_e( 'Revenue Forecaster', 'giftrocket-tools' ); ?></td>
+						<td><code>[giftrocket_forecaster]</code></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<?php
+	}
+}

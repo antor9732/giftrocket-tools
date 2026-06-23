@@ -1,0 +1,234 @@
+{
+  "version": "2.0",
+  "meta": {
+    "name": "Gift Genius",
+    "currency": "USD",
+    "currencySymbol": "$"
+  },
+  "questions": [
+    {
+      "id": "occasion",
+      "question": "What's the occasion?",
+      "emoji": "🎉",
+      "hint": "We'll match the tone — celebratory, supportive, or low-key.",
+      "layout": "compact"
+    },
+    {
+      "id": "personality",
+      "question": "What's their vibe?",
+      "emoji": "🧠",
+      "hint": "Pick the energy that fits them most days, not just today.",
+      "layout": "compact"
+    },
+    {
+      "id": "budget",
+      "question": "What's your budget?",
+      "emoji": "💰",
+      "hint": "Pick a range or enter your own amount — we'll tailor suggestions to fit.",
+      "layout": "budget",
+      "type": "budget"
+    },
+    {
+      "id": "relationship",
+      "question": "How do you know them?",
+      "emoji": "🤝",
+      "hint": "Helps us calibrate how personal (or professional) to get.",
+      "layout": "compact"
+    },
+    {
+      "id": "delivery",
+      "question": "How soon do you need it?",
+      "emoji": "📦",
+      "hint": "Digital gift cards land instantly — great for last-minute saves.",
+      "layout": "default"
+    }
+  ],
+  "occasions": {
+    "birthday": { "label": "Birthday", "emoji": "🎂", "tone": "celebratory", "formality": 0.2 },
+    "thankyou": { "label": "Thank You", "emoji": "🙏", "tone": "grateful", "formality": 0.5 },
+    "anniversary": { "label": "Anniversary", "emoji": "💕", "tone": "romantic", "formality": 0.3 },
+    "wedding": { "label": "Wedding", "emoji": "💍", "tone": "formal", "formality": 0.8 },
+    "graduation": { "label": "Graduation", "emoji": "🎓", "tone": "proud", "formality": 0.5 },
+    "babyshower": { "label": "Baby Shower", "emoji": "👶", "tone": "warm", "formality": 0.4 },
+    "housewarming": { "label": "Housewarming", "emoji": "🏠", "tone": "cozy", "formality": 0.4 },
+    "holiday": { "label": "Holiday", "emoji": "🎄", "tone": "festive", "formality": 0.5 },
+    "getwell": { "label": "Get Well", "emoji": "💐", "tone": "caring", "formality": 0.3 },
+    "retirement": { "label": "Retirement", "emoji": "🌅", "tone": "reflective", "formality": 0.6 },
+    "justbecause": { "label": "Just Because", "emoji": "✨", "tone": "spontaneous", "formality": 0.1 }
+  },
+  "personalities": {
+    "foodie": { "label": "Foodie", "emoji": "🍽️", "desc": "Lives to eat", "traits": ["curious", "social"], "categories": ["dining", "kitchen", "gourmet"] },
+    "fashion": { "label": "Fashionista", "emoji": "👗", "desc": "Style-first", "traits": ["visual", "trendy"], "categories": ["fashion", "beauty", "accessories"] },
+    "tech": { "label": "Tech Lover", "emoji": "💻", "desc": "Early adopter", "traits": ["practical", "research-driven"], "categories": ["gadgets", "software", "smart-home"] },
+    "experience": { "label": "Experience Seeker", "emoji": "🎭", "desc": "Memories > things", "traits": ["adventurous", "spontaneous"], "categories": ["events", "travel", "classes"] },
+    "wellness": { "label": "Wellness Guru", "emoji": "🧘", "desc": "Balance & self-care", "traits": ["mindful", "health-focused"], "categories": ["spa", "fitness", "mindfulness"] },
+    "bookworm": { "label": "Bookworm", "emoji": "📚", "desc": "Always reading", "traits": ["introspective", "thoughtful"], "categories": ["books", "stationery", "coffee"] },
+    "homebody": { "label": "Homebody", "emoji": "🛋️", "desc": "Cozy nest builder", "traits": ["comfort-seeking", "domestic"], "categories": ["home", "decor", "candles"] },
+    "fitness": { "label": "Fitness Fan", "emoji": "💪", "desc": "Always moving", "traits": ["active", "goal-driven"], "categories": ["sportswear", "gym", "outdoors"] },
+    "creative": { "label": "Creative Soul", "emoji": "🎨", "desc": "Makes & collects", "traits": ["expressive", "hands-on"], "categories": ["art-supplies", "craft", "workshops"] },
+    "petlover": { "label": "Pet Parent", "emoji": "🐾", "desc": "Pets come first", "traits": ["nurturing", "playful"], "categories": ["pet", "outdoors", "comfort"] }
+  },
+  "relationships": {
+    "partner": { "label": "Partner / Spouse", "emoji": "💞", "intimacy": "high", "formality": 0.2 },
+    "parent": { "label": "Parent", "emoji": "👨‍👩‍👧", "intimacy": "high", "formality": 0.3 },
+    "sibling": { "label": "Sibling", "emoji": "👫", "intimacy": "medium", "formality": 0.2 },
+    "child": { "label": "Son / Daughter", "emoji": "🧒", "intimacy": "high", "formality": 0.2 },
+    "friend": { "label": "Close Friend", "emoji": "🤗", "intimacy": "medium", "formality": 0.3 },
+    "colleague": { "label": "Colleague", "emoji": "💼", "intimacy": "low", "formality": 0.7 },
+    "boss": { "label": "Boss / Manager", "emoji": "👔", "intimacy": "low", "formality": 0.85 },
+    "neighbor": { "label": "Neighbor", "emoji": "🏡", "intimacy": "low", "formality": 0.5 },
+    "mentor": { "label": "Mentor / Teacher", "emoji": "📖", "intimacy": "medium", "formality": 0.75 },
+    "extended": { "label": "Extended Family", "emoji": "👪", "intimacy": "medium", "formality": 0.5 }
+  },
+  "budgetPresets": {
+    "micro": { "label": "Under $25", "emoji": "🌸", "desc": "Sweet gesture", "min": 10, "max": 25, "sweetSpot": 20 },
+    "small": { "label": "$25 – $50", "emoji": "🌱", "desc": "Thoughtful", "min": 25, "max": 50, "sweetSpot": 40 },
+    "medium": { "label": "$50 – $100", "emoji": "🌿", "desc": "Generous", "min": 50, "max": 100, "sweetSpot": 75 },
+    "large": { "label": "$100 – $200", "emoji": "🌳", "desc": "Impressive", "min": 100, "max": 200, "sweetSpot": 150 },
+    "premium": { "label": "$200+", "emoji": "👑", "desc": "Go big", "min": 200, "max": 500, "sweetSpot": 275 },
+    "custom": { "label": "Custom amount", "emoji": "✏️", "desc": "I'll decide", "min": 10, "max": 2000, "sweetSpot": null }
+  },
+  "delivery": {
+    "today": { "label": "Today", "emoji": "⚡", "desc": "Last minute!", "urgency": 1.0, "digitalBonus": 15 },
+    "tomorrow": { "label": "Tomorrow", "emoji": "🌅", "desc": "Soon enough", "urgency": 0.7, "digitalBonus": 8 },
+    "week": { "label": "This week", "emoji": "📅", "desc": "Planned ahead", "urgency": 0.4, "digitalBonus": 0 },
+    "flexible": { "label": "No rush", "emoji": "🧘", "desc": "Browsing", "urgency": 0.1, "digitalBonus": 0 }
+  },
+  "giftItems": [
+    { "id": "tasting-menu", "name": "Chef's tasting menu for two", "emoji": "🍷", "personalities": ["foodie", "experience"], "occasions": ["birthday", "anniversary", "thankyou", "justbecause"], "relationships": ["partner", "friend", "parent", "sibling"], "budgetMin": 70, "budgetMax": 220, "digitalFriendly": true, "surpriseFactor": 0.75, "category": "dining" },
+    { "id": "artisan-coffee-sub", "name": "3-month artisan coffee subscription", "emoji": "☕", "personalities": ["foodie", "bookworm", "homebody"], "occasions": ["birthday", "thankyou", "holiday", "justbecause"], "relationships": ["any"], "budgetMin": 45, "budgetMax": 90, "digitalFriendly": true, "surpriseFactor": 0.6, "category": "gourmet" },
+    { "id": "cooking-class", "name": "Hands-on cooking class voucher", "emoji": "👨‍🍳", "personalities": ["foodie", "creative", "experience"], "occasions": ["birthday", "anniversary", "graduation"], "relationships": ["partner", "friend", "sibling", "parent"], "budgetMin": 55, "budgetMax": 150, "digitalFriendly": true, "surpriseFactor": 0.8, "category": "experience" },
+    { "id": "wine-club", "name": "Curated wine club starter box", "emoji": "🍾", "personalities": ["foodie", "experience"], "occasions": ["housewarming", "holiday", "retirement", "thankyou"], "relationships": ["partner", "friend", "colleague", "extended"], "budgetMin": 60, "budgetMax": 180, "digitalFriendly": true, "surpriseFactor": 0.65, "category": "gourmet" },
+    { "id": "farm-box", "name": "Local farm-to-table produce box", "emoji": "🥬", "personalities": ["foodie", "wellness", "homebody"], "occasions": ["housewarming", "getwell", "thankyou"], "relationships": ["neighbor", "friend", "extended", "parent"], "budgetMin": 35, "budgetMax": 85, "digitalFriendly": true, "surpriseFactor": 0.7, "category": "gourmet" },
+    { "id": "designer-scarf", "name": "Designer silk scarf (their pick)", "emoji": "🧣", "personalities": ["fashion"], "occasions": ["birthday", "holiday", "thankyou"], "relationships": ["partner", "parent", "friend", "mentor"], "budgetMin": 80, "budgetMax": 250, "digitalFriendly": false, "surpriseFactor": 0.55, "category": "fashion" },
+    { "id": "personal-stylist", "name": "1-hour virtual styling session", "emoji": "✨", "personalities": ["fashion", "experience"], "occasions": ["birthday", "graduation", "justbecause"], "relationships": ["friend", "sibling", "partner"], "budgetMin": 50, "budgetMax": 120, "digitalFriendly": true, "surpriseFactor": 0.85, "category": "fashion" },
+    { "id": "luxury-skincare", "name": "Luxury skincare set (choose your tier)", "emoji": "💆", "personalities": ["fashion", "wellness"], "occasions": ["birthday", "anniversary", "holiday"], "relationships": ["partner", "parent", "friend"], "budgetMin": 45, "budgetMax": 200, "digitalFriendly": true, "surpriseFactor": 0.5, "category": "beauty" },
+    { "id": "sneaker-drop", "name": "Sneaker store gift card for next drop", "emoji": "👟", "personalities": ["fashion", "fitness"], "occasions": ["birthday", "graduation", "justbecause"], "relationships": ["friend", "sibling", "child"], "budgetMin": 80, "budgetMax": 300, "digitalFriendly": true, "surpriseFactor": 0.7, "category": "fashion" },
+    { "id": "noise-cancel", "name": "Premium noise-canceling earbuds fund", "emoji": "🎧", "personalities": ["tech", "bookworm", "wellness"], "occasions": ["birthday", "graduation", "holiday"], "relationships": ["any"], "budgetMin": 100, "budgetMax": 350, "digitalFriendly": true, "surpriseFactor": 0.6, "category": "gadgets" },
+    { "id": "smart-home-starter", "name": "Smart home starter kit credit", "emoji": "🏠", "personalities": ["tech", "homebody"], "occasions": ["housewarming", "holiday", "wedding"], "relationships": ["partner", "friend", "extended"], "budgetMin": 75, "budgetMax": 250, "digitalFriendly": true, "surpriseFactor": 0.65, "category": "smart-home" },
+    { "id": "gaming-store", "name": "Game store credit (PC or console)", "emoji": "🎮", "personalities": ["tech", "experience"], "occasions": ["birthday", "holiday", "justbecause"], "relationships": ["friend", "sibling", "child", "partner"], "budgetMin": 30, "budgetMax": 150, "digitalFriendly": true, "surpriseFactor": 0.55, "category": "gadgets" },
+    { "id": "mechanical-keyboard", "name": "Custom mechanical keyboard fund", "emoji": "⌨️", "personalities": ["tech", "creative"], "occasions": ["birthday", "graduation", "thankyou"], "relationships": ["friend", "colleague", "sibling"], "budgetMin": 90, "budgetMax": 280, "digitalFriendly": true, "surpriseFactor": 0.8, "category": "gadgets" },
+    { "id": "concert-tickets", "name": "Concert or live show tickets", "emoji": "🎤", "personalities": ["experience", "creative"], "occasions": ["birthday", "anniversary", "graduation", "justbecause"], "relationships": ["partner", "friend", "sibling"], "budgetMin": 50, "budgetMax": 300, "digitalFriendly": true, "surpriseFactor": 0.9, "category": "events" },
+    { "id": "escape-room", "name": "Escape room experience for the group", "emoji": "🔐", "personalities": ["experience", "tech"], "occasions": ["birthday", "thankyou", "justbecause"], "relationships": ["friend", "colleague", "sibling"], "budgetMin": 40, "budgetMax": 120, "digitalFriendly": true, "surpriseFactor": 0.85, "category": "experience" },
+    { "id": "hot-air-balloon", "name": "Hot air balloon ride voucher", "emoji": "🎈", "personalities": ["experience", "fitness"], "occasions": ["anniversary", "birthday", "retirement"], "relationships": ["partner", "parent", "friend"], "budgetMin": 150, "budgetMax": 400, "digitalFriendly": true, "surpriseFactor": 0.95, "category": "experience" },
+    { "id": "museum-membership", "name": "Annual museum or gallery membership", "emoji": "🖼️", "personalities": ["experience", "creative", "bookworm"], "occasions": ["birthday", "holiday", "retirement"], "relationships": ["partner", "parent", "mentor", "friend"], "budgetMin": 60, "budgetMax": 180, "digitalFriendly": true, "surpriseFactor": 0.7, "category": "culture" },
+    { "id": "spa-day", "name": "Full spa day package", "emoji": "🧖", "personalities": ["wellness", "experience"], "occasions": ["birthday", "anniversary", "getwell", "thankyou"], "relationships": ["partner", "parent", "friend", "mentor"], "budgetMin": 80, "budgetMax": 250, "digitalFriendly": true, "surpriseFactor": 0.6, "category": "spa" },
+    { "id": "yoga-retreat", "name": "Weekend yoga retreat deposit", "emoji": "🧘", "personalities": ["wellness", "experience"], "occasions": ["birthday", "retirement", "getwell"], "relationships": ["partner", "friend", "parent"], "budgetMin": 120, "budgetMax": 400, "digitalFriendly": true, "surpriseFactor": 0.85, "category": "wellness" },
+    { "id": "meditation-app", "name": "Premium meditation app (1-year)", "emoji": "🌿", "personalities": ["wellness", "bookworm"], "occasions": ["getwell", "thankyou", "justbecause", "holiday"], "relationships": ["any"], "budgetMin": 50, "budgetMax": 100, "digitalFriendly": true, "surpriseFactor": 0.55, "category": "wellness" },
+    { "id": "massage-gun", "name": "Recovery massage gun", "emoji": "💆‍♂️", "personalities": ["wellness", "fitness"], "occasions": ["birthday", "getwell", "thankyou"], "relationships": ["partner", "friend", "colleague", "sibling"], "budgetMin": 70, "budgetMax": 200, "digitalFriendly": false, "surpriseFactor": 0.65, "category": "fitness" },
+    { "id": "bookstore-credit", "name": "Independent bookstore credit", "emoji": "📖", "personalities": ["bookworm", "creative"], "occasions": ["birthday", "holiday", "thankyou", "graduation"], "relationships": ["any"], "budgetMin": 25, "budgetMax": 100, "digitalFriendly": true, "surpriseFactor": 0.5, "category": "books" },
+    { "id": "rare-edition", "name": "Signed or rare edition book fund", "emoji": "📕", "personalities": ["bookworm"], "occasions": ["birthday", "retirement", "thankyou"], "relationships": ["partner", "parent", "mentor", "friend"], "budgetMin": 40, "budgetMax": 150, "digitalFriendly": false, "surpriseFactor": 0.8, "category": "books" },
+    { "id": "audiobook-sub", "name": "Audiobook subscription (6 months)", "emoji": "🎧", "personalities": ["bookworm", "tech", "fitness"], "occasions": ["holiday", "getwell", "justbecause"], "relationships": ["any"], "budgetMin": 45, "budgetMax": 90, "digitalFriendly": true, "surpriseFactor": 0.55, "category": "books" },
+    { "id": "journal-set", "name": "Premium leather journal & pen set", "emoji": "✒️", "personalities": ["bookworm", "creative", "wellness"], "occasions": ["graduation", "thankyou", "retirement"], "relationships": ["mentor", "colleague", "friend", "boss"], "budgetMin": 35, "budgetMax": 95, "digitalFriendly": false, "surpriseFactor": 0.7, "category": "stationery" },
+    { "id": "candle-collection", "name": "Artisan candle collection (3-pack)", "emoji": "🕯️", "personalities": ["homebody", "wellness"], "occasions": ["housewarming", "holiday", "thankyou", "getwell"], "relationships": ["neighbor", "friend", "extended", "colleague"], "budgetMin": 30, "budgetMax": 75, "digitalFriendly": false, "surpriseFactor": 0.45, "category": "home" },
+    { "id": "throw-blanket", "name": "Luxury weighted throw blanket", "emoji": "🛏️", "personalities": ["homebody", "wellness"], "occasions": ["housewarming", "getwell", "holiday", "justbecause"], "relationships": ["partner", "parent", "friend"], "budgetMin": 60, "budgetMax": 150, "digitalFriendly": false, "surpriseFactor": 0.6, "category": "home" },
+    { "id": "plant-subscription", "name": "Monthly plant delivery subscription", "emoji": "🪴", "personalities": ["homebody", "creative"], "occasions": ["housewarming", "thankyou", "justbecause"], "relationships": ["neighbor", "friend", "colleague", "extended"], "budgetMin": 40, "budgetMax": 120, "digitalFriendly": true, "surpriseFactor": 0.75, "category": "home" },
+    { "id": "kitchen-upgrade", "name": "Kitchen upgrade fund (Dutch oven, knives)", "emoji": "🔪", "personalities": ["homebody", "foodie"], "occasions": ["housewarming", "wedding", "holiday"], "relationships": ["partner", "extended", "friend"], "budgetMin": 80, "budgetMax": 300, "digitalFriendly": true, "surpriseFactor": 0.65, "category": "kitchen" },
+    { "id": "gym-membership", "name": "Boutique gym month pass", "emoji": "🏋️", "personalities": ["fitness", "wellness"], "occasions": ["birthday", "holiday", "justbecause", "graduation"], "relationships": ["friend", "partner", "sibling"], "budgetMin": 50, "budgetMax": 150, "digitalFriendly": true, "surpriseFactor": 0.6, "category": "fitness" },
+    { "id": "running-shoes", "name": "Running shoe upgrade fund", "emoji": "👟", "personalities": ["fitness"], "occasions": ["birthday", "holiday", "thankyou"], "relationships": ["friend", "partner", "child", "sibling"], "budgetMin": 90, "budgetMax": 220, "digitalFriendly": true, "surpriseFactor": 0.55, "category": "fitness" },
+    { "id": "hiking-gear", "name": "Trail-ready hiking gear credit", "emoji": "🥾", "personalities": ["fitness", "experience"], "occasions": ["birthday", "retirement", "graduation"], "relationships": ["friend", "partner", "parent", "sibling"], "budgetMin": 60, "budgetMax": 200, "digitalFriendly": true, "surpriseFactor": 0.7, "category": "outdoors" },
+    { "id": "climbing-pass", "name": "Indoor climbing day pass + gear rental", "emoji": "🧗", "personalities": ["fitness", "experience"], "occasions": ["birthday", "justbecause", "thankyou"], "relationships": ["friend", "sibling", "colleague"], "budgetMin": 35, "budgetMax": 90, "digitalFriendly": true, "surpriseFactor": 0.85, "category": "experience" },
+    { "id": "art-supplies", "name": "Professional art supply bundle", "emoji": "🖌️", "personalities": ["creative"], "occasions": ["birthday", "graduation", "thankyou"], "relationships": ["friend", "child", "sibling", "mentor"], "budgetMin": 40, "budgetMax": 120, "digitalFriendly": false, "surpriseFactor": 0.65, "category": "art" },
+    { "id": "pottery-class", "name": "Pottery wheel workshop voucher", "emoji": "🏺", "personalities": ["creative", "experience", "homebody"], "occasions": ["birthday", "anniversary", "justbecause"], "relationships": ["partner", "friend", "parent"], "budgetMin": 55, "budgetMax": 130, "digitalFriendly": true, "surpriseFactor": 0.9, "category": "experience" },
+    { "id": "photo-print", "name": "Professional photo print & frame fund", "emoji": "📸", "personalities": ["creative", "homebody"], "occasions": ["anniversary", "wedding", "housewarming", "holiday"], "relationships": ["partner", "parent", "extended"], "budgetMin": 45, "budgetMax": 150, "digitalFriendly": true, "surpriseFactor": 0.7, "category": "art" },
+    { "id": "pet-spa", "name": "Pet spa day + gourmet treats bundle", "emoji": "🐕", "personalities": ["petlover"], "occasions": ["birthday", "thankyou", "justbecause", "holiday"], "relationships": ["friend", "neighbor", "sibling"], "budgetMin": 35, "budgetMax": 90, "digitalFriendly": true, "surpriseFactor": 0.8, "category": "pet" },
+    { "id": "pet-camera", "name": "Pet cam treat dispenser", "emoji": "📹", "personalities": ["petlover", "tech"], "occasions": ["birthday", "housewarming", "justbecause"], "relationships": ["partner", "friend", "sibling"], "budgetMin": 80, "budgetMax": 180, "digitalFriendly": false, "surpriseFactor": 0.75, "category": "pet" },
+    { "id": "donation-match", "name": "Charitable donation in their name", "emoji": "💚", "personalities": ["wellness", "bookworm", "experience"], "occasions": ["retirement", "thankyou", "holiday", "wedding"], "relationships": ["boss", "mentor", "colleague", "extended"], "budgetMin": 25, "budgetMax": 500, "digitalFriendly": true, "surpriseFactor": 0.7, "category": "charity" },
+    { "id": "masterclass", "name": "MasterClass annual pass", "emoji": "🎬", "personalities": ["creative", "tech", "foodie", "bookworm"], "occasions": ["birthday", "graduation", "retirement", "holiday"], "relationships": ["any"], "budgetMin": 120, "budgetMax": 200, "digitalFriendly": true, "surpriseFactor": 0.65, "category": "learning" },
+    { "id": "language-app", "name": "Language learning app (1-year premium)", "emoji": "🌍", "personalities": ["bookworm", "experience", "tech"], "occasions": ["graduation", "retirement", "birthday"], "relationships": ["friend", "child", "partner", "mentor"], "budgetMin": 60, "budgetMax": 120, "digitalFriendly": true, "surpriseFactor": 0.6, "category": "learning" },
+    { "id": "streaming-bundle", "name": "Streaming bundle (pick 2 services)", "emoji": "📺", "personalities": ["homebody", "tech"], "occasions": ["getwell", "holiday", "justbecause", "housewarming"], "relationships": ["any"], "budgetMin": 30, "budgetMax": 80, "digitalFriendly": true, "surpriseFactor": 0.4, "category": "digital" },
+    { "id": "meal-kit", "name": "Gourmet meal kit (4 nights for two)", "emoji": "🥘", "personalities": ["foodie", "homebody", "wellness"], "occasions": ["getwell", "housewarming", "thankyou", "justbecause"], "relationships": ["partner", "parent", "friend", "extended"], "budgetMin": 55, "budgetMax": 140, "digitalFriendly": true, "surpriseFactor": 0.65, "category": "gourmet" },
+    { "id": "baby-essentials", "name": "New-parent essentials gift card", "emoji": "🍼", "personalities": ["homebody", "petlover"], "occasions": ["babyshower"], "relationships": ["friend", "sibling", "extended", "colleague"], "budgetMin": 50, "budgetMax": 200, "digitalFriendly": true, "surpriseFactor": 0.5, "category": "baby" },
+    { "id": "registry-contribution", "name": "Wedding registry top-off contribution", "emoji": "💝", "personalities": ["homebody", "experience", "fashion"], "occasions": ["wedding"], "relationships": ["friend", "extended", "colleague", "neighbor"], "budgetMin": 75, "budgetMax": 400, "digitalFriendly": true, "surpriseFactor": 0.45, "category": "wedding" },
+    { "id": "retirement-trip", "name": "Retirement adventure fund seed", "emoji": "✈️", "personalities": ["experience", "fitness", "foodie"], "occasions": ["retirement"], "relationships": ["colleague", "boss", "mentor", "friend"], "budgetMin": 100, "budgetMax": 500, "digitalFriendly": true, "surpriseFactor": 0.75, "category": "travel" },
+    { "id": "care-package", "name": "Curated get-well care package", "emoji": "🍵", "personalities": ["wellness", "homebody", "bookworm"], "occasions": ["getwell"], "relationships": ["any"], "budgetMin": 30, "budgetMax": 85, "digitalFriendly": false, "surpriseFactor": 0.55, "category": "care" },
+    { "id": "grad-laptop-fund", "name": "Graduation laptop upgrade fund", "emoji": "💻", "personalities": ["tech", "creative", "bookworm"], "occasions": ["graduation"], "relationships": ["child", "sibling", "friend", "mentor"], "budgetMin": 150, "budgetMax": 500, "digitalFriendly": true, "surpriseFactor": 0.6, "category": "gadgets" },
+    { "id": "local-experience", "name": "Hidden gem local experience (surprise pick)", "emoji": "🗺️", "personalities": ["experience", "foodie", "creative"], "occasions": ["*"], "relationships": ["any"], "budgetMin": 25, "budgetMax": 200, "digitalFriendly": true, "surpriseFactor": 0.95, "category": "experience" }
+  ],
+  "whyTemplates": {
+    "foodie": [
+      "They'll probably spend 20 minutes picking the restaurant — and love every second of it.",
+      "Food people remember flavors, not price tags. This hits the memory center, not the junk drawer.",
+      "You avoided the 'wrong reservation' trap. They choose the spot, you get the credit."
+    ],
+    "fashion": [
+      "Sizing and taste are landmines. This sidesteps both elegantly.",
+      "They've had their eye on something specific — this lets them pull the trigger guilt-free.",
+      "Style gifts fail when you guess. This succeeds because they curate."
+    ],
+    "tech": [
+      "They've already read 47 reviews. Now they can buy the one that won.",
+      "Tech gifts age fast — credit beats a gadget that ships obsolete.",
+      "Spec sheets are personal. Let them pick the RAM, you pick the moment."
+    ],
+    "experience": [
+      "They'll tell this story at dinner parties. Objects rarely get that honor.",
+      "Experiences don't collect dust — they collect stories.",
+      "You're not giving a thing. You're giving a 'remember when we…'"
+    ],
+    "wellness": [
+      "Self-care hits different when someone else initiates it.",
+      "They won't buy this for themselves — but they'll absolutely use it.",
+      "Rest is a gift most people postpone. You're making it happen."
+    ],
+    "bookworm": [
+      "They've got a TBR pile and zero guilt budget. Fix one of those.",
+      "Books are intimate choices. Credit respects their taste without guessing the title.",
+      "Quiet gifts for quiet people — but the thought won't be quiet."
+    ],
+    "homebody": [
+      "Their happy place is home. Upgrade that sanctuary.",
+      "Cozy people notice texture, scent, and warmth — this nails all three.",
+      "They'd rather nest than go out. Meet them where they live."
+    ],
+    "fitness": [
+      "Gear motivates when it comes from someone who noticed their grind.",
+      "Athletes are picky about equipment. Credit = no wrong size, no wrong brand.",
+      "You're fueling the habit, not just buying an object."
+    ],
+    "creative": [
+      "Creatives light up when they get permission to play — this is that permission.",
+      "Supplies run out. Inspiration doesn't. Refill both.",
+      "They'll make something because of this. That's the real gift."
+    ],
+    "petlover": [
+      "You're gifting their best friend. They'll melt.",
+      "Pet parents spend on fur babies before themselves — honor that priority.",
+      "This says 'I know what matters to you' without guessing the breed size."
+    ]
+  },
+  "geniusInsights": [
+    "Plot twist: the best gift here isn't the item — it's that you didn't guess wrong.",
+    "Gift Genius read: they value {trait} more than flash. This matches that.",
+    "Most people default to generic. You just skipped the '{occasion}' cliché entirely.",
+    "Honest take: they'd rather pick the exact one than unwrap a near-miss.",
+    "This works because it respects how they actually spend free time.",
+    "Unpopular opinion: flexibility beats surprise for this personality type.",
+    "You're not being lazy — you're being strategically thoughtful."
+  ],
+  "occasionHooks": {
+    "birthday": "Birthdays deserve something that feels chosen, not grabbed off a shelf.",
+    "thankyou": "A thank-you gift should feel proportional — not performative.",
+    "anniversary": "Anniversary gifts should create a moment, not fill a closet.",
+    "wedding": "Registry contributions feel personal when they're specific, not vague cash.",
+    "graduation": "Graduation marks a pivot — gift something that fits who they're becoming.",
+    "babyshower": "New parents need practical magic, not more onesies.",
+    "housewarming": "Help them make the new place feel like theirs, faster.",
+    "holiday": "Holiday gifts land best when they feel tailored, not bulk-bought.",
+    "getwell": "Gentle, comforting, zero effort on their end — that's the brief.",
+    "retirement": "Retirement is the rare gift moment where time matters more than things.",
+    "justbecause": "Just-because gifts win when they're oddly specific. This is that."
+  },
+  "relationshipModifiers": {
+    "partner": { "tag": "Romantic", "amountBoost": 1.05 },
+    "parent": { "tag": "Heartfelt", "amountBoost": 1.0 },
+    "sibling": { "tag": "Inside-joke energy", "amountBoost": 1.0 },
+    "child": { "tag": "Proud parent pick", "amountBoost": 1.1 },
+    "friend": { "tag": "Bestie-approved", "amountBoost": 1.0 },
+    "colleague": { "tag": "Office-appropriate", "amountBoost": 0.95 },
+    "boss": { "tag": "Professionally polished", "amountBoost": 1.05 },
+    "neighbor": { "tag": "Neighborly warm", "amountBoost": 0.9 },
+    "mentor": { "tag": "Respectfully thoughtful", "amountBoost": 1.05 },
+    "extended": { "tag": "Family classic", "amountBoost": 1.0 }
+  }
+}
