@@ -85,15 +85,27 @@ $upsell_url = esc_url( $atts['upsell_url'] ?? '' );
 <div id="gr_lead_modal" class="gr-modal-overlay" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="gr_modal_title" aria-hidden="true">
 	<div class="gr-modal-box">
 		<button class="gr-modal-close" id="gr_close_modal" type="button" aria-label="<?php esc_attr_e( 'Close dialog', 'giftrocket-tools' ); ?>">✕</button>
-		<div class="gr-modal-icon">📩</div>
-		<h3 id="gr_modal_title"><?php esc_html_e( 'Unlock ', 'giftrocket-tools' ); ?> <span style="color:#8b5cf6;"><?php esc_html_e( '20% Off ', 'giftrocket-tools' ); ?> </span> <?php esc_html_e( 'GiftRocket ', 'giftrocket-tools' ); ?>?</h3>
-		<p><?php esc_html_e( 'Enter your email and store URL to claim your', 'giftrocket-tools' ); ?> <strong><?php esc_html_e( '20% discount code', 'giftrocket-tools' ); ?></strong> <?php esc_html_e( 'instantly.', 'giftrocket-tools' ); ?></p>
+		
+		<!-- Form Section -->
+		<div id="gr_form_section">
+			<div class="gr-modal-icon">📩</div>
+			<h3 id="gr_modal_title"><?php esc_html_e( 'Unlock ', 'giftrocket-tools' ); ?> <span style="color:#8b5cf6;"><?php esc_html_e( '20% Off ', 'giftrocket-tools' ); ?> </span> <?php esc_html_e( 'GiftRocket ', 'giftrocket-tools' ); ?>?</h3>
+			<p><?php esc_html_e( 'Enter your email and store URL to claim your', 'giftrocket-tools' ); ?> <strong><?php esc_html_e( '20% discount code', 'giftrocket-tools' ); ?></strong> <?php esc_html_e( 'instantly.', 'giftrocket-tools' ); ?></p>
 
-		<form id="gr_lead_form">
-			<input type="email" id="gr_user_email" placeholder="<?php esc_attr_e( 'Your best email *', 'giftrocket-tools' ); ?>" required>
-			<input type="url" id="gr_store_url" placeholder="<?php esc_attr_e( 'Your store URL (e.g. mystore.com)', 'giftrocket-tools' ); ?>" required>
-			<button type="submit" class="gr-modal-submit"><?php esc_html_e( 'Send My Report & Unlock 20% Off →', 'giftrocket-tools' ); ?></button>
-		</form>
-		<p class="gr-modal-note">🔒 <?php esc_html_e( 'No spam. Unsubscribe anytime. Your data is safe.', 'giftrocket-tools' ); ?></p>
+			<form id="gr_lead_form">
+				<input type="email" id="gr_user_email" placeholder="<?php esc_attr_e( 'Your best email *', 'giftrocket-tools' ); ?>" required>
+				<input type="url" id="gr_store_url" placeholder="<?php esc_attr_e( 'Your store URL (e.g. mystore.com)', 'giftrocket-tools' ); ?>" required>
+				<button type="submit" class="gr-modal-submit"><?php esc_html_e( 'Send My Report & Unlock 20% Off →', 'giftrocket-tools' ); ?></button>
+			</form>
+			<p class="gr-modal-note">🔒 <?php esc_html_e( 'No spam. Unsubscribe anytime. Your data is safe.', 'giftrocket-tools' ); ?></p>
+		</div>
+
+		<!-- Thank You Section -->
+		<div id="gr_thank_you_section" style="display: none; text-align: center;">
+			<div class="gr-modal-icon" style="font-size: 56px;">✅</div>
+			<h3 style="margin-top: 16px;"><?php esc_html_e( 'Thank You!', 'giftrocket-tools' ); ?></h3>
+			<p><?php esc_html_e( 'Check your email for your exclusive 20% discount code.', 'giftrocket-tools' ); ?></p>
+			<p style="font-size: 13px; color: #999; margin-top: 12px;"><?php esc_html_e( 'Redirecting you now…', 'giftrocket-tools' ); ?></p>
+		</div>
 	</div>
 </div>

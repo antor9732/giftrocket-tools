@@ -459,17 +459,33 @@
                 folder: '72x72',
                 ext: '.png',
                 base: pdfConfig.twemojiBase || 'https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/',
-                className: 'grt-quiz-pdf-emoji'
+                className: 'grt-quiz-pdf-emoji',
+                attributes: function () {
+                    return {
+                        crossorigin: 'anonymous',
+                        referrerpolicy: 'no-referrer',
+                        loading: 'eager',
+                        decoding: 'sync'
+                    };
+                }
             });
 
             root.querySelectorAll('img.grt-quiz-pdf-emoji').forEach(function (img) {
-                var src = img.getAttribute('src');
+                var src = img.currentSrc || img.src || img.getAttribute('src');
                 if (!src) {
                     return;
                 }
                 img.crossOrigin = 'anonymous';
                 img.referrerPolicy = 'no-referrer';
-                img.setAttribute('src', src);
+                img.loading = 'eager';
+                img.decoding = 'sync';
+                img.setAttribute('crossorigin', 'anonymous');
+                img.setAttribute('referrerpolicy', 'no-referrer');
+                img.setAttribute('loading', 'eager');
+                img.setAttribute('decoding', 'sync');
+                if (img.src !== src) {
+                    img.src = src;
+                }
             });
         }
 

@@ -95,10 +95,16 @@
         }
 
         function closeModalFunc() {
+            var formSection = document.getElementById('gr_form_section');
+            var thankYouSection = document.getElementById('gr_thank_you_section');
+            
             modal.style.display = 'none';
             modal.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
             calcBtn.focus();
+            
+            formSection.style.display = 'block';
+            thankYouSection.style.display = 'none';
         }
 
         function setCalculating(isCalculating) {
@@ -199,8 +205,17 @@
                         return;
                     }
 
+                    var formSection = document.getElementById('gr_form_section');
+                    var thankYouSection = document.getElementById('gr_thank_you_section');
+                    
+                    formSection.style.display = 'none';
+                    thankYouSection.style.display = 'block';
+
                     var redirect = (result.data.data && result.data.data.redirect) || config.redirectUrl || '/';
-                    window.location.href = redirect;
+                    
+                    setTimeout(function () {
+                        window.location.href = redirect;
+                    }, 2500);
                 })
                 .catch(function () {
                     window.alert(config.errorMessage || 'We could not send your discount email. Please try again.');
