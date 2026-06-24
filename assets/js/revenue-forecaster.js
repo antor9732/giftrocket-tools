@@ -6,25 +6,25 @@
         if (!forecasterWrap) return;
 
         var config = window.giftRocketForecaster || {};
-        var aovInput = document.getElementById('gr_aov');
-        var visitorsInput = document.getElementById('gr_visitors');
-        var conversionInput = document.getElementById('gr_conversion');
-        var calcBtn = document.getElementById('gr_calculate_btn');
-        var btnText = calcBtn.querySelector('.gr-btn-text');
-        var btnLoader = calcBtn.querySelector('.gr-btn-loader');
-        var resultArea = document.getElementById('gr_result_area');
+        var aovInput = document.getElementById('grt_aov');
+        var visitorsInput = document.getElementById('grt_visitors');
+        var conversionInput = document.getElementById('grt_conversion');
+        var calcBtn = document.getElementById('grt_calculate_btn');
+        var btnText = calcBtn.querySelector('.grt-btn-text');
+        var btnLoader = calcBtn.querySelector('.grt-btn-loader');
+        var resultArea = document.getElementById('grt_result_area');
         var monthlyDisplay = document.getElementById('gr_monthly_loss');
         var yearlyDisplay = document.getElementById('gr_yearly_loss');
-        var modal = document.getElementById('gr_lead_modal');
-        var closeModalBtn = document.getElementById('gr_close_modal');
-        var leadForm = document.getElementById('gr_lead_form');
-        var emailInput = document.getElementById('gr_user_email');
-        var urlInput = document.getElementById('gr_store_url');
+        var modal = document.getElementById('grt_lead_modal');
+        var closeModalBtn = document.getElementById('grt_close_modal');
+        var leadForm = document.getElementById('grl_lead_form');
+        var emailInput = document.getElementById('grt_user_email');
+        var urlInput = document.getElementById('grt_store_url');
 
         var fields = {
-            aov: aovInput.closest('.gr-field'),
-            visitors: visitorsInput.closest('.gr-field'),
-            conversion: conversionInput.closest('.gr-field')
+            aov: aovInput.closest('.grt-field'),
+            visitors: visitorsInput.closest('.grt-field'),
+            conversion: conversionInput.closest('.grt-field')
         };
 
         function formatCurrency(amount) {
@@ -95,8 +95,8 @@
         }
 
         function closeModalFunc() {
-            var formSection = document.getElementById('gr_form_section');
-            var thankYouSection = document.getElementById('gr_thank_you_section');
+            var formSection = document.getElementById('grt_form_section');
+            var thankYouSection = document.getElementById('grt_thank_you_section');
             
             modal.style.display = 'none';
             modal.setAttribute('aria-hidden', 'true');
@@ -171,7 +171,7 @@
                 return;
             }
 
-            var submitBtn = leadForm.querySelector('.gr-modal-submit');
+            var submitBtn = leadForm.querySelector('.grt-modal-submit');
             var submitLabel = config.submitLabel || 'Send My Report & Unlock 20% Off →';
             submitBtn.textContent = '✅ Sending…';
             submitBtn.disabled = true;
@@ -205,8 +205,8 @@
                         return;
                     }
 
-                    var formSection = document.getElementById('gr_form_section');
-                    var thankYouSection = document.getElementById('gr_thank_you_section');
+                    var formSection = document.getElementById('grt_form_section');
+                    var thankYouSection = document.getElementById('grt_thank_you_section');
                     
                     formSection.style.display = 'none';
                     thankYouSection.style.display = 'block';

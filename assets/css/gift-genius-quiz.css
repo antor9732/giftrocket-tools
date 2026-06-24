@@ -251,8 +251,8 @@
     justify-content: center;
     gap: 8px;
     padding: 20px 16px;
-    background: #f9fafb;
-    border: 2px solid transparent;
+    background: #f9fafb !important;
+    border: 2px solid transparent !important;
     border-radius: 16px;
     cursor: pointer;
     transition: all 0.25s ease;

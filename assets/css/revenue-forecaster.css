@@ -11,12 +11,12 @@
 }
 
 /* Header */
-.gr-header {
+.grt-header {
     text-align: center;
     margin-bottom: 30px;
 }
 
-.gr-badge {
+.grt-badge {
     background: #f3f0ff;
     color: #6d28d9;
     padding: 4px 16px;
@@ -28,14 +28,14 @@
     margin-bottom: 12px;
 }
 
-.gr-header h2 {
+.grt-header h2 {
     font-size: 28px;
     font-weight: 700;
     line-height: 1.3;
     margin: 0 0 8px 0;
 }
 
-.gr-highlight {
+.grt-highlight {
     background: linear-gradient(120deg, #f59e0b 0%, #f59e0b 40%, #fcd34d 90%);
     background-repeat: no-repeat;
     background-size: 100% 40%;
@@ -43,7 +43,7 @@
     padding: 0 6px;
 }
 
-.gr-header p {
+.grt-header p {
     color: #6b7280;
     font-size: 16px;
     max-width: 480px;
@@ -51,7 +51,7 @@
 }
 
 /* Calculator Card */
-.gr-calculator-card {
+.grt-calculator-card {
     background: #ffffff;
     border-radius: 24px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 8px 20px rgba(0, 0, 0, 0.02);
@@ -61,23 +61,23 @@
 }
 
 /* Input Group */
-.gr-input-group {
+.grt-input-group {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 18px;
     margin-bottom: 28px;
 }
 
-.gr-field {
+.grt-field {
     display: flex;
     flex-direction: column;
 }
 
-.gr-field:last-child {
+.grt-field:last-child {
     grid-column: span 2;
 }
 
-.gr-field label {
+.grt-field label {
     font-size: 14px;
     font-weight: 600;
     color: #374151;
@@ -87,13 +87,13 @@
     gap: 6px;
 }
 
-.gr-field.has-error .gr-input-wrapper,
-.gr-field.has-error > input[type="number"] {
+.grt-field.has-error .grt-input-wrapper,
+.grt-field.has-error > input[type="number"] {
     border-color: #ef4444;
     box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
 }
 
-.gr-tooltip {
+.grt-tooltip {
     background: #e5e7eb;
     color: #4b5563;
     font-size: 10px;
@@ -102,7 +102,7 @@
     border-radius: 4px;
 }
 
-.gr-input-wrapper {
+.grt-input-wrapper {
     display: flex;
     align-items: center;
     background: #f9fafb;
@@ -111,20 +111,20 @@
     transition: border 0.2s ease;
 }
 
-.gr-input-wrapper:focus-within {
+.grt-input-wrapper:focus-within {
     border-color: #8b5cf6;
     box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
     background: #ffffff;
 }
 
-.gr-currency {
+.grt-currency {
     padding: 0 12px;
     font-weight: 600;
     color: #9ca3af;
     font-size: 15px;
 }
 
-.gr-input-wrapper input {
+.grt-input-wrapper input {
     width: 100%;
     padding: 14px 12px 14px 0;
     border: none;
@@ -135,23 +135,23 @@
     color: #1f2937;
 }
 
-.gr-input-wrapper input::placeholder {
+.grt-input-wrapper input::placeholder {
     color: #b0b8c4;
     font-weight: 400;
 }
 
 /* Remove number arrows */
-.gr-input-wrapper input[type=number]::-webkit-inner-spin-button,
-.gr-input-wrapper input[type=number]::-webkit-outer-spin-button {
+.grt-input-wrapper input[type=number]::-webkit-inner-spin-button,
+.grt-input-wrapper input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-.gr-input-wrapper input[type=number] {
+.grt-input-wrapper input[type=number] {
     -moz-appearance: textfield;
 }
 
 /* CTA Button */
-.gr-cta-button {
+.grt-cta-button {
     width: 100%;
     padding: 16px;
     background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
@@ -169,18 +169,18 @@
     gap: 10px;
 }
 
-.gr-cta-button:hover {
+.grt-cta-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 12px 32px rgba(109, 40, 217, 0.4);
     background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
 }
 
-.gr-cta-button:active {
+.grt-cta-button:active {
     transform: scale(0.98);
 }
 
 /* Result Area */
-.gr-result-area {
+.grt-result-area {
     margin-top: 32px;
     animation: fadeSlideUp 0.5s ease forwards;
 }
@@ -196,13 +196,13 @@
     }
 }
 
-.gr-divider {
+.grt-divider {
     text-align: center;
     margin-bottom: 22px;
     position: relative;
 }
 
-.gr-divider span {
+.grt-divider span {
     background: #f9fafb;
     padding: 0 16px;
     font-size: 13px;
@@ -213,7 +213,7 @@
     z-index: 1;
 }
 
-.gr-divider::after {
+.grt-divider::after {
     content: '';
     position: absolute;
     left: 0;
@@ -224,14 +224,14 @@
     z-index: 0;
 }
 
-.gr-result-grid {
+.grt-result-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
     margin-bottom: 28px;
 }
 
-.gr-result-item {
+.grt-result-item {
     background: #f9fafb;
     padding: 18px 16px;
     border-radius: 14px;
@@ -239,12 +239,12 @@
     border: 1px solid #f1f3f5;
 }
 
-.gr-highlight-item {
+.grt-highlight-item {
     background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
     border: 1.5px solid #f59e0b;
 }
 
-.gr-result-label {
+.grt-result-label {
     display: block;
     font-size: 13px;
     font-weight: 500;
@@ -252,20 +252,20 @@
     margin-bottom: 6px;
 }
 
-.gr-result-number {
+.grt-result-number {
     font-size: 28px;
     font-weight: 800;
     color: #1f2937;
     letter-spacing: -0.5px;
 }
 
-.gr-highlight-item .gr-result-number {
+.grt-highlight-item .grt-result-number {
     color: #b45309;
     font-size: 32px;
 }
 
 /* Upsell Box */
-.gr-upsell-box {
+.grt-upsell-box {
     background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
     border-radius: 16px;
     padding: 20px 22px;
@@ -273,32 +273,32 @@
     margin-bottom: 20px;
 }
 
-.gr-upsell-content {
+.grt-upsell-content {
     display: flex;
     align-items: center;
     gap: 16px;
     flex-wrap: wrap;
 }
 
-.gr-upsell-icon {
+.grt-upsell-icon {
     font-size: 32px;
     flex-shrink: 0;
 }
 
-.gr-upsell-content h4 {
+.grt-upsell-content h4 {
     margin: 0;
     font-size: 16px;
     font-weight: 700;
     color: #4c1d95;
 }
 
-.gr-upsell-content p {
+.grt-upsell-content p {
     margin: 2px 0 0 0;
     font-size: 14px;
     color: #5b21b6;
 }
 
-.gr-upsell-button {
+.grt-upsell-button {
     margin-left: auto;
     background: #4c1d95;
     color: #fff;
@@ -311,13 +311,13 @@
     white-space: nowrap;
 }
 
-.gr-upsell-button:hover {
+.grt-upsell-button:hover {
     background: #2e1065;
     color: #fff;
 }
 
 /* Trust Footer */
-.gr-trust-footer {
+.grt-trust-footer {
     display: flex;
     justify-content: center;
     gap: 28px;
@@ -328,14 +328,14 @@
     flex-wrap: wrap;
 }
 
-.gr-trust-footer strong {
+.grt-trust-footer strong {
     color: #1f2937;
 }
 
 /* ----------------------------- */
 /* LEAD MODAL STYLES             */
 /* ----------------------------- */
-.gr-modal-overlay {
+.grt-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -360,7 +360,7 @@
     }
 }
 
-.gr-modal-box {
+.grt-modal-box {
     background: #ffffff;
     max-width: 460px;
     width: 100%;
@@ -383,7 +383,7 @@
     }
 }
 
-.gr-modal-close {
+.grt-modal-close {
     position: absolute;
     top: 16px;
     right: 20px;
@@ -395,36 +395,36 @@
     transition: color 0.2s;
 }
 
-.gr-modal-close:hover {
+.grt-modal-close:hover {
     color: #374151;
 }
 
-.gr-modal-icon {
+.grt-modal-icon {
     font-size: 48px;
     margin-bottom: 12px;
 }
 
-.gr-modal-box h3 {
+.grt-modal-box h3 {
     font-size: 22px;
     font-weight: 700;
     margin: 0 0 8px 0;
     color: #1f2937;
 }
 
-.gr-modal-box p {
+.grt-modal-box p {
     font-size: 15px;
     color: #6b7280;
     line-height: 1.6;
     margin-bottom: 24px;
 }
 
-#gr_lead_form {
+#grl_lead_form {
     display: flex;
     flex-direction: column;
     gap: 14px;
 }
 
-#gr_lead_form input {
+#grl_lead_form input {
     padding: 14px 18px;
     border: 1.5px solid #e5e7eb;
     border-radius: 12px;
@@ -435,12 +435,12 @@
     box-sizing: border-box;
 }
 
-#gr_lead_form input:focus {
+#grl_lead_form input:focus {
     border-color: #8b5cf6;
     box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12);
 }
 
-.gr-modal-submit {
+.grt-modal-submit {
     padding: 14px;
     background: #1f2937;
     color: #fff;
@@ -452,11 +452,11 @@
     transition: background 0.25s;
 }
 
-.gr-modal-submit:hover {
+.grt-modal-submit:hover {
     background: #111827;
 }
 
-.gr-modal-note {
+.grt-modal-note {
     font-size: 12px;
     color: #9ca3af;
     margin-top: 16px;
@@ -464,41 +464,41 @@
 
 /* Responsive */
 @media (prefers-reduced-motion: reduce) {
-    .gr-result-area,
-    .gr-cta-button,
-    .gr-modal-overlay,
-    .gr-modal-box {
+    .grt-result-area,
+    .grt-cta-button,
+    .grt-modal-overlay,
+    .grt-modal-box {
         animation: none;
         transition: none;
     }
 }
 
 @media (max-width: 600px) {
-    .gr-input-group {
+    .grt-input-group {
         grid-template-columns: 1fr;
     }
-    .gr-field:last-child {
+    .grt-field:last-child {
         grid-column: span 1;
     }
-    .gr-result-grid {
+    .grt-result-grid {
         grid-template-columns: 1fr;
     }
-    .gr-upsell-content {
+    .grt-upsell-content {
         flex-direction: column;
         text-align: center;
     }
-    .gr-upsell-button {
+    .grt-upsell-button {
         margin-left: 0;
         width: 100%;
         text-align: center;
     }
-    .gr-header h2 {
+    .grt-header h2 {
         font-size: 22px;
     }
-    .gr-calculator-card {
+    .grt-calculator-card {
         padding: 22px 16px;
     }
-    .gr-trust-footer {
+    .grt-trust-footer {
         gap: 14px;
         font-size: 12px;
     }
