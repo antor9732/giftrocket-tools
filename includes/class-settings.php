@@ -13,10 +13,11 @@ class GiftRocket_Settings {
 
 	public static function defaults(): array {
 		return array(
-			'shop_url'      => '',
-			'upsell_url'    => home_url( '/' ),
-			'redirect_url'  => home_url( '/' ),
-			'notify_email'  => get_option( 'admin_email' ),
+			'shop_url'       => '',
+			'upsell_url'     => home_url( '/' ),
+			'redirect_url'   => home_url( '/' ),
+			'notify_email'   => get_option( 'admin_email' ),
+			'discount_code'  => 'GIFTROCKET20',
 		);
 	}
 
@@ -34,6 +35,18 @@ class GiftRocket_Settings {
 	}
 
 	public static function add_menu(): void {
+		if ( function_exists( 'wallregi_gift_cards_parent_menu_slug' ) ) {
+			add_submenu_page(
+				wallregi_gift_cards_parent_menu_slug(),
+				__( 'GiftRocket Tools', 'giftrocket-tools' ),
+				__( 'GiftRocket Tools', 'giftrocket-tools' ),
+				'manage_options',
+				'giftrocket-tools',
+				array( __CLASS__, 'render_page' )
+			);
+			return;
+		}
+
 		add_options_page(
 			__( 'GiftRocket Tools', 'giftrocket-tools' ),
 			__( 'GiftRocket Tools', 'giftrocket-tools' ),
@@ -60,14 +73,15 @@ class GiftRocket_Settings {
 			'giftrocket-tools'
 		);
 
-		$fields = array(
-			'shop_url'     => __( 'Shop / Gift Cards URL', 'giftrocket-tools' ),
-			'upsell_url'   => __( 'Forecaster Upsell Button URL', 'giftrocket-tools' ),
-			'redirect_url' => __( 'Lead Form Redirect URL', 'giftrocket-tools' ),
-			'notify_email' => __( 'Lead Notification Email', 'giftrocket-tools' ),
+		$main_fields = array(
+			'shop_url'      => __( 'Shop / Gift Cards URL', 'giftrocket-tools' ),
+			'upsell_url'    => __( 'Forecaster Upsell Button URL', 'giftrocket-tools' ),
+			'redirect_url'  => __( 'Lead Form Redirect URL', 'giftrocket-tools' ),
+			'notify_email'  => __( 'Lead Notification Email', 'giftrocket-tools' ),
+			'discount_code' => __( 'Revenue Audit Discount Code', 'giftrocket-tools' ),
 		);
 
-		foreach ( $fields as $id => $label ) {
+		foreach ( $main_fields as $id => $label ) {
 			add_settings_field(
 				$id,
 				$label,
@@ -77,18 +91,25 @@ class GiftRocket_Settings {
 				array( 'id' => $id )
 			);
 		}
+
+		// Email settings UI removed - plugin will use wp_mail() for outgoing mail.
 	}
 
 	public static function sanitize( $input ): array {
+		$existing = wp_parse_args(
+			get_option( self::OPTION_KEY, array() ),
+			self::defaults()
+		);
 		$clean = array();
-
 		foreach ( self::defaults() as $key => $default ) {
 			if ( ! isset( $input[ $key ] ) ) {
 				continue;
 			}
 
-			if ( 'notify_email' === $key ) {
+			if ( in_array( $key, array( 'notify_email' ), true ) ) {
 				$clean[ $key ] = sanitize_email( $input[ $key ] );
+			} elseif ( in_array( $key, array( 'discount_code' ), true ) ) {
+				$clean[ $key ] = sanitize_text_field( $input[ $key ] );
 			} else {
 				$clean[ $key ] = esc_url_raw( $input[ $key ] );
 			}
@@ -96,12 +117,19 @@ class GiftRocket_Settings {
 
 		return wp_parse_args( $clean, self::defaults() );
 	}
-
 	public static function render_field( array $args ): void {
 		$id       = $args['id'];
 		$settings = self::get();
 		$value    = $settings[ $id ] ?? '';
-		$type     = 'notify_email' === $id ? 'email' : 'url';
+
+		// Determine input type for remaining fields.
+		if ( 'notify_email' === $id ) {
+			$type = 'email';
+		} elseif ( 'discount_code' === $id ) {
+			$type = 'text';
+		} else {
+			$type = 'url';
+		}
 
 		printf(
 			'<input type="%1$s" name="%2$s[%3$s]" id="%3$s" value="%4$s" class="regular-text" />',
@@ -112,10 +140,11 @@ class GiftRocket_Settings {
 		);
 
 		$hints = array(
-			'shop_url'     => __( 'Used by the Gift Genius quiz "Shop Gift Cards" button.', 'giftrocket-tools' ),
-			'upsell_url'   => __( 'Used by the Revenue Forecaster "Get GiftRocket Now" button.', 'giftrocket-tools' ),
-			'redirect_url' => __( 'Where users go after submitting the lead capture form.', 'giftrocket-tools' ),
-			'notify_email' => __( 'Receives forecaster lead submissions.', 'giftrocket-tools' ),
+			'shop_url'      => __( 'Used by the Gift Genius quiz "Shop Gift Cards" button.', 'giftrocket-tools' ),
+			'upsell_url'    => __( 'Used by the Revenue Forecaster "Get GiftRocket Now" button.', 'giftrocket-tools' ),
+			'redirect_url'  => __( 'Where users go after submitting the lead capture form.', 'giftrocket-tools' ),
+			'notify_email'  => __( 'Receives forecaster lead submissions.', 'giftrocket-tools' ),
+			'discount_code' => __( 'Sent to users in the Revenue Audit discount email.', 'giftrocket-tools' ),
 		);
 
 		if ( isset( $hints[ $id ] ) ) {

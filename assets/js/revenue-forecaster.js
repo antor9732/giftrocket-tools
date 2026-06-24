@@ -166,6 +166,7 @@
             }
 
             var submitBtn = leadForm.querySelector('.gr-modal-submit');
+            var submitLabel = config.submitLabel || 'Send My Report & Unlock 20% Off →';
             submitBtn.textContent = '✅ Sending…';
             submitBtn.disabled = true;
 
@@ -182,13 +183,29 @@
                 body: formData,
                 credentials: 'same-origin'
             })
-                .then(function (response) { return response.json(); })
-                .then(function (data) {
-                    var redirect = (data.data && data.data.redirect) || config.redirectUrl || '/';
+                .then(function (response) {
+                    return response.json().then(function (data) {
+                        return { ok: response.ok, data: data };
+                    });
+                })
+                .then(function (result) {
+                    if (!result.ok || !result.data || !result.data.success) {
+                        var message = (result.data && result.data.data && result.data.data.message) ||
+                            config.errorMessage ||
+                            'We could not send your discount email. Please try again.';
+                        window.alert(message);
+                        submitBtn.textContent = submitLabel;
+                        submitBtn.disabled = false;
+                        return;
+                    }
+
+                    var redirect = (result.data.data && result.data.data.redirect) || config.redirectUrl || '/';
                     window.location.href = redirect;
                 })
                 .catch(function () {
-                    window.location.href = config.redirectUrl || '/';
+                    window.alert(config.errorMessage || 'We could not send your discount email. Please try again.');
+                    submitBtn.textContent = submitLabel;
+                    submitBtn.disabled = false;
                 });
         });
 

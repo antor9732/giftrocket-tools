@@ -2,7 +2,7 @@
     'use strict';
 
     document.addEventListener('DOMContentLoaded', function () {
-        var wrap = document.getElementById('gift-quiz-wrap');
+        var wrap = document.getElementById('grt-gift-quiz-wrap');
         if (!wrap) return;
 
         var DATA = null;
@@ -13,24 +13,24 @@
         var isQuizActive = false;
 
         var screens = {
-            intro: document.getElementById('quiz-intro'),
-            quiz: document.getElementById('quiz-container'),
-            results: document.getElementById('quiz-results')
+            intro: document.getElementById('grt-quiz-intro'),
+            quiz: document.getElementById('grt-quiz-container'),
+            results: document.getElementById('grt-quiz-results')
         };
 
-        var startBtn = document.getElementById('start-quiz-btn');
-        var questionText = document.getElementById('question-text');
-        var questionHint = document.getElementById('question-hint');
-        var questionCounter = document.getElementById('question-counter');
-        var optionsContainer = document.getElementById('options-container');
-        var budgetCustomPanel = document.getElementById('budget-custom-panel');
-        var budgetCustomInput = document.getElementById('budget-custom-input');
-        var progressBar = document.getElementById('progress-bar');
-        var progressText = document.getElementById('progress-text');
-        var prevBtn = document.getElementById('prev-btn');
-        var nextBtn = document.getElementById('next-btn');
-        var retakeBtn = document.getElementById('retake-quiz-btn');
-        var exploreBtn = document.getElementById('explore-gifts-btn');
+        var startBtn = document.getElementById('grt-start-quiz-btn');
+        var questionText = document.getElementById('grt-question-text');
+        var questionHint = document.getElementById('grt-question-hint');
+        var questionCounter = document.getElementById('grt-question-counter');
+        var optionsContainer = document.getElementById('grt-options-container');
+        var budgetCustomPanel = document.getElementById('grt-budget-custom-panel');
+        var budgetCustomInput = document.getElementById('grt-budget-custom-input');
+        var progressBar = document.getElementById('grt-progress-bar');
+        var progressText = document.getElementById('grt-progress-text');
+        var prevBtn = document.getElementById('grt-prev-btn');
+        var nextBtn = document.getElementById('grt-next-btn');
+        var retakeBtn = document.getElementById('grt-retake-quiz-btn');
+        var downloadBtn = document.getElementById('grt-download-quiz-btn');
 
         function loadGiftGeniusData() {
             var jsonUrl = (window.giftRocketQuiz && giftRocketQuiz.jsonUrl) || wrap.dataset.jsonUrl || 'gift-genius-data.json';
@@ -102,9 +102,9 @@
             progressBar.style.width = progress + '%';
             progressText.textContent = (index + 1) + ' / ' + totalQuestions;
 
-            optionsContainer.className = 'quiz-options';
+            optionsContainer.className = 'grt-quiz-options';
             if (question.layout === 'compact' || question.layout === 'budget') {
-                optionsContainer.classList.add('quiz-options--compact');
+                optionsContainer.classList.add('grt-quiz-options--compact');
             }
 
             budgetCustomPanel.classList.toggle('visible', question.type === 'budget' && answers.budget === 'custom');
@@ -118,14 +118,14 @@
             options.forEach(function (option) {
                 var btn = document.createElement('button');
                 btn.type = 'button';
-                btn.className = 'quiz-option';
+                btn.className = 'grt-quiz-option';
                 btn.setAttribute('role', 'option');
                 btn.setAttribute('aria-selected', answers[question.id] === option.id ? 'true' : 'false');
                 btn.dataset.value = option.id;
                 btn.innerHTML =
-                    '<span class="option-emoji" aria-hidden="true">' + option.emoji + '</span>' +
-                    '<span class="option-label">' + option.label + '</span>' +
-                    (option.desc ? '<span class="option-description">' + option.desc + '</span>' : '');
+                    '<span class="grt-option-emoji" aria-hidden="true">' + option.emoji + '</span>' +
+                    '<span class="grt-option-label">' + option.label + '</span>' +
+                    (option.desc ? '<span class="grt-option-description">' + option.desc + '</span>' : '');
 
                 if (answers[question.id] === option.id) {
                     btn.classList.add('selected');
@@ -139,7 +139,7 @@
             });
 
             prevBtn.style.visibility = index === 0 ? 'hidden' : 'visible';
-            nextBtn.textContent = index === totalQuestions - 1 ? '✨ See My Result' : 'Next →';
+            nextBtn.textContent = index === totalQuestions - 1 ? '✨ Show Result' : 'Next →';
             updateNextButtonState(question);
 
             screens.quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -158,7 +158,7 @@
                 }
             }
 
-            optionsContainer.querySelectorAll('.quiz-option').forEach(function (opt) {
+            optionsContainer.querySelectorAll('.grt-quiz-option').forEach(function (opt) {
                 var selected = opt.dataset.value === optionId;
                 opt.classList.toggle('selected', selected);
                 opt.setAttribute('aria-selected', selected ? 'true' : 'false');
@@ -379,24 +379,24 @@
         }
 
         function renderResultItems(result) {
-            var list = document.getElementById('result-items-list');
+            var list = document.getElementById('grt-result-items-list');
             list.innerHTML = '';
 
             result.allPicks.forEach(function (item, idx) {
                 var li = document.createElement('li');
-                li.className = 'result-item-row' + (idx === 0 ? ' is-primary' : '');
+                li.className = 'grt-result-item-row' + (idx === 0 ? ' is-primary' : '');
 
                 var priceHint = item.budgetMin === item.budgetMax
                     ? formatMoney(item.budgetMin)
                     : formatMoney(item.budgetMin) + '–' + formatMoney(item.budgetMax);
 
                 li.innerHTML =
-                    '<span class="result-item-emoji" aria-hidden="true">' + item.emoji + '</span>' +
-                    '<div class="result-item-body">' +
+                    '<span class="grt-result-item-emoji" aria-hidden="true">' + item.emoji + '</span>' +
+                    '<div class="grt-result-item-body">' +
                         '<strong>' + item.name + '</strong>' +
                         '<span>Typical range: ' + priceHint + '</span>' +
                     '</div>' +
-                    (idx === 0 ? '<span class="result-item-badge">Top pick</span>' : '<span class="result-item-badge">Alt</span>');
+                    (idx === 0 ? '<span class="grt-result-item-badge">Top pick</span>' : '<span class="grt-result-item-badge">Alt</span>');
 
                 list.appendChild(li);
             });
@@ -409,19 +409,19 @@
             lastResult = getResult();
             var result = lastResult;
 
-            document.getElementById('result-emoji').textContent = result.emoji;
-            document.getElementById('result-title').textContent = result.title;
-            document.getElementById('result-occasion').textContent = 'For: ' + result.occasionLabel;
-            document.getElementById('result-amount').textContent = result.amount;
-            document.getElementById('result-description').textContent = result.description;
-            document.getElementById('result-why').textContent = result.why;
-            document.getElementById('result-insight').textContent = '🧠 ' + result.insight;
+            document.getElementById('grt-result-emoji').textContent = result.emoji;
+            document.getElementById('grt-result-title').textContent = result.title;
+            document.getElementById('grt-result-occasion').textContent = 'For: ' + result.occasionLabel;
+            document.getElementById('grt-result-amount').textContent = result.amount;
+            document.getElementById('grt-result-description').textContent = result.description;
+            document.getElementById('grt-result-why').textContent = result.why;
+            document.getElementById('grt-result-insight').textContent = '🧠 ' + result.insight;
 
-            var tagsContainer = document.getElementById('result-personality');
+            var tagsContainer = document.getElementById('grt-result-personality');
             tagsContainer.innerHTML = '';
             result.tags.forEach(function (tag) {
                 var span = document.createElement('span');
-                span.className = 'personality-tag';
+                span.className = 'grt-personality-tag';
                 span.textContent = '✨ ' + tag;
                 tagsContainer.appendChild(span);
             });
@@ -429,6 +429,201 @@
             renderResultItems(result);
             trackQuizCompletion();
             screens.results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function waitForImages(root) {
+            var images = root.querySelectorAll('img');
+            if (!images.length) {
+                return Promise.resolve();
+            }
+
+            return Promise.all(Array.prototype.map.call(images, function (img) {
+                if (img.complete && img.naturalWidth > 0) {
+                    return Promise.resolve();
+                }
+
+                return new Promise(function (resolve) {
+                    img.addEventListener('load', resolve, { once: true });
+                    img.addEventListener('error', resolve, { once: true });
+                });
+            }));
+        }
+
+        function applyPdfEmojiImages(root) {
+            if (typeof twemoji === 'undefined') {
+                return;
+            }
+
+            var pdfConfig = (window.giftRocketQuiz && giftRocketQuiz.pdf) || {};
+            twemoji.parse(root, {
+                folder: '72x72',
+                ext: '.png',
+                base: pdfConfig.twemojiBase || 'https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/',
+                className: 'grt-quiz-pdf-emoji'
+            });
+
+            root.querySelectorAll('img.grt-quiz-pdf-emoji').forEach(function (img) {
+                var src = img.getAttribute('src');
+                if (!src) {
+                    return;
+                }
+                img.crossOrigin = 'anonymous';
+                img.referrerPolicy = 'no-referrer';
+                img.setAttribute('src', src);
+            });
+        }
+
+        function inlineImagesAsDataUrls(root) {
+            var images = Array.prototype.slice.call(root.querySelectorAll('img'));
+            if (!images.length) {
+                return Promise.resolve();
+            }
+
+            return Promise.all(images.map(function (img) {
+                if (!img.src || img.src.indexOf('data:') === 0) {
+                    return Promise.resolve();
+                }
+
+                var src = img.src;
+
+                return fetch(src, { mode: 'cors', credentials: 'omit', cache: 'force-cache' })
+                    .then(function (response) {
+                        if (!response.ok) {
+                            throw new Error('emoji_fetch_failed');
+                        }
+                        return response.blob();
+                    })
+                    .then(function (blob) {
+                        return new Promise(function (resolve) {
+                            var reader = new FileReader();
+                            reader.onloadend = function () {
+                                if (typeof reader.result === 'string') {
+                                    img.src = reader.result;
+                                }
+                                resolve();
+                            };
+                            reader.onerror = resolve;
+                            reader.readAsDataURL(blob);
+                        });
+                    })
+                    .catch(function () {
+                        return new Promise(function (resolve) {
+                            var proxyImg = new Image();
+                            proxyImg.crossOrigin = 'anonymous';
+                            proxyImg.referrerPolicy = 'no-referrer';
+                            proxyImg.onload = function () {
+                                var canvas = document.createElement('canvas');
+                                canvas.width = proxyImg.naturalWidth || 72;
+                                canvas.height = proxyImg.naturalHeight || 72;
+                                try {
+                                    canvas.getContext('2d').drawImage(proxyImg, 0, 0);
+                                    img.src = canvas.toDataURL('image/png');
+                                } catch (e) {
+                                    // Keep remote src if canvas is tainted.
+                                }
+                                resolve();
+                            };
+                            proxyImg.onerror = resolve;
+                            proxyImg.src = src;
+                        });
+                    });
+            }));
+        }
+
+        function addCanvasToPdf(pdf, canvas, marginX) {
+            var imgData = canvas.toDataURL('image/png');
+            var pdfWidth = pdf.internal.pageSize.getWidth();
+            var pdfHeight = pdf.internal.pageSize.getHeight();
+            var marginTop = marginX;
+            var contentWidth = pdfWidth - marginX * 2;
+            var contentHeight = pdfHeight - marginTop * 2;
+            var imgWidth = contentWidth;
+            var imgHeight = (canvas.height * imgWidth) / canvas.width;
+            var heightLeft = imgHeight;
+            var position = marginTop;
+
+            pdf.addImage(imgData, 'PNG', marginX, position, imgWidth, imgHeight);
+            heightLeft -= contentHeight;
+
+            while (heightLeft > 0) {
+                position = heightLeft - imgHeight + marginTop;
+                pdf.addPage();
+                pdf.addImage(imgData, 'PNG', marginX, position, imgWidth, imgHeight);
+                heightLeft -= contentHeight;
+            }
+        }
+
+        function downloadQuizPdf() {
+            var pdfConfig = (window.giftRocketQuiz && giftRocketQuiz.pdf) || {};
+
+            if (!lastResult) {
+                window.alert(pdfConfig.completeFirst || 'Please complete the quiz before downloading your results.');
+                return Promise.reject(new Error('quiz_incomplete'));
+            }
+
+            if (typeof html2canvas !== 'function' || !window.jspdf || !window.jspdf.jsPDF) {
+                window.alert(pdfConfig.libraryError || 'PDF download is unavailable. Please refresh the page and try again.');
+                return Promise.reject(new Error('pdf_libraries_missing'));
+            }
+
+            var resultsEl = document.getElementById('grt-quiz-results');
+            if (!resultsEl) {
+                return Promise.reject(new Error('results_element_missing'));
+            }
+
+            var captureWidth = resultsEl.offsetWidth || 720;
+            var marginX = typeof pdfConfig.marginX === 'number' ? pdfConfig.marginX : 15;
+
+            var wrapper = document.createElement('div');
+            wrapper.setAttribute('aria-hidden', 'true');
+            wrapper.style.cssText = 'position:fixed;left:-10000px;top:0;z-index:-1;width:' + captureWidth + 'px;background:#fff;';
+
+            var clone = resultsEl.cloneNode(true);
+            clone.classList.add('grt-quiz-results--pdf-capture');
+            clone.style.display = 'block';
+
+            var footer = clone.querySelector('.grt-result-footer-actions');
+            if (footer) {
+                footer.remove();
+            }
+
+            wrapper.appendChild(clone);
+            document.body.appendChild(wrapper);
+            applyPdfEmojiImages(clone);
+
+            return waitForImages(clone)
+                .then(function () {
+                    return inlineImagesAsDataUrls(clone);
+                })
+                .then(function () {
+                    return waitForImages(clone);
+                })
+                .then(function () {
+                    return html2canvas(clone, {
+                        scale: 2,
+                        useCORS: true,
+                        allowTaint: false,
+                        logging: false,
+                        backgroundColor: '#ffffff',
+                        width: captureWidth,
+                        windowWidth: captureWidth,
+                        imageTimeout: 15000
+                    });
+                })
+                .then(function (canvas) {
+                    var JsPDF = window.jspdf.jsPDF;
+                    var pdf = new JsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+                    addCanvasToPdf(pdf, canvas, marginX);
+
+                    var prefix = pdfConfig.filenamePrefix || 'gift-genius-quiz';
+                    var filename = prefix + '-' + new Date().toISOString().slice(0, 10) + '.pdf';
+                    pdf.save(filename);
+                })
+                .finally(function () {
+                    if (wrapper.parentNode) {
+                        wrapper.parentNode.removeChild(wrapper);
+                    }
+                });
         }
 
         function shareResult(platform) {
@@ -451,39 +646,7 @@
                     break;
             }
         }
-
-        function copyShareText(text) {
-            var btn = wrap.querySelector('.share-btn.copy');
-            var originalText = btn.innerHTML;
-
-            function showCopied() {
-                btn.innerHTML = '✅ Copied!';
-                setTimeout(function () { btn.innerHTML = originalText; }, 2000);
-            }
-
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(text).then(showCopied).catch(function () {
-                    fallbackCopy(text);
-                    showCopied();
-                });
-            } else {
-                fallbackCopy(text);
-                showCopied();
-            }
-        }
-
-        function fallbackCopy(text) {
-            var textarea = document.createElement('textarea');
-            textarea.value = text;
-            textarea.setAttribute('readonly', '');
-            textarea.style.position = 'absolute';
-            textarea.style.left = '-9999px';
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-        }
-
+ 
         function resetQuiz() {
             currentQuestionIndex = 0;
             Object.keys(answers).forEach(function (key) { delete answers[key]; });
@@ -527,13 +690,22 @@
         prevBtn.addEventListener('click', goToPrev);
         retakeBtn.addEventListener('click', resetQuiz);
 
-        exploreBtn.addEventListener('click', function () {
-            var shopUrl = wrap.dataset.shopUrl;
-            if (shopUrl) {
-                window.location.href = shopUrl;
-                return;
-            }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        downloadBtn.addEventListener('click', function () {
+            var originalLabel = downloadBtn.innerHTML;
+            downloadBtn.disabled = true;
+            downloadBtn.textContent = 'Preparing PDF…';
+
+            downloadQuizPdf()
+                .catch(function (err) {
+                    if (err && err.message !== 'quiz_incomplete' && err.message !== 'pdf_libraries_missing') {
+                        console.error(err);
+                        window.alert('Could not generate the PDF. Please try again.');
+                    }
+                })
+                .finally(function () {
+                    downloadBtn.disabled = false;
+                    downloadBtn.innerHTML = originalLabel;
+                });
         });
 
         wrap.querySelectorAll('[data-share]').forEach(function (btn) {
@@ -544,6 +716,11 @@
 
         document.addEventListener('keydown', function (e) {
             if (!isQuizActive) return;
+
+            var active = document.activeElement;
+            if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.isContentEditable)) {
+                return;
+            }
 
             if (e.key === 'Enter' && !nextBtn.disabled) {
                 e.preventDefault();
@@ -560,7 +737,7 @@
 
             var num = parseInt(e.key, 10);
             if (num >= 1 && num <= 9) {
-                var option = optionsContainer.querySelectorAll('.quiz-option')[num - 1];
+                var option = optionsContainer.querySelectorAll('.grt-quiz-option')[num - 1];
                 if (option) option.click();
             }
         });

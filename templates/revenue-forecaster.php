@@ -86,8 +86,8 @@ $upsell_url = esc_url( $atts['upsell_url'] ?? '' );
 	<div class="gr-modal-box">
 		<button class="gr-modal-close" id="gr_close_modal" type="button" aria-label="<?php esc_attr_e( 'Close dialog', 'giftrocket-tools' ); ?>">✕</button>
 		<div class="gr-modal-icon">📩</div>
-		<h3 id="gr_modal_title"><?php esc_html_e( 'Where should we send your', 'giftrocket-tools' ); ?> <span style="color:#8b5cf6;"><?php esc_html_e( 'full report', 'giftrocket-tools' ); ?></span>?</h3>
-		<p><?php esc_html_e( 'Enter your email and store URL to unlock your detailed breakdown, plus get a', 'giftrocket-tools' ); ?> <strong><?php esc_html_e( '20% discount code', 'giftrocket-tools' ); ?></strong> <?php esc_html_e( 'for GiftRocket.', 'giftrocket-tools' ); ?></p>
+		<h3 id="gr_modal_title"><?php esc_html_e( 'Unlock ', 'giftrocket-tools' ); ?> <span style="color:#8b5cf6;"><?php esc_html_e( '20% Off ', 'giftrocket-tools' ); ?> </span> <?php esc_html_e( 'GiftRocket ', 'giftrocket-tools' ); ?>?</h3>
+		<p><?php esc_html_e( 'Enter your email and store URL to claim your', 'giftrocket-tools' ); ?> <strong><?php esc_html_e( '20% discount code', 'giftrocket-tools' ); ?></strong> <?php esc_html_e( 'instantly.', 'giftrocket-tools' ); ?></p>
 
 		<form id="gr_lead_form">
 			<input type="email" id="gr_user_email" placeholder="<?php esc_attr_e( 'Your best email *', 'giftrocket-tools' ); ?>" required>
