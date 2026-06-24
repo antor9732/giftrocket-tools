@@ -78,4 +78,21 @@ class GiftRocket_Database {
 
 		return (int) $wpdb->insert_id;
 	}
+
+	/**
+	 * @return array<int, array<string, string>>
+	 */
+	public static function get_revenue_audits( int $limit = 20 ): array {
+		global $wpdb;
+
+		$table = self::table_name();
+
+		return $wpdb->get_results(
+			$wpdb->prepare(
+				"SELECT email, store_url, monthly_loss, yearly_loss, created_at FROM {$table} ORDER BY created_at DESC LIMIT %d",
+				$limit
+			),
+			ARRAY_A
+		) ?: array();
+	}
 }
